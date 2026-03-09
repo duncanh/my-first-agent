@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nora Castillo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --blue: #3300FF;
+      --crimson: #FF0033;
+      --vermillion: #FF3300;
+      --black: #0a0a0a;
+      --white: #f8f6f1;
+      --serif: 'Lora', 'Georgia', 'Times New Roman', serif;
+      --display: 'Playfair Display', 'Georgia', serif;
+    }
+
+    html {
+      font-size: 12pt;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* =========================================
+       LAYOUT — vertical stack, proportional
+       ========================================= */
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    .section--heading   { flex: 5; }   /* 25% */
+    .section--fact      { flex: 11; }  /* 55% */
+    .section--contact   { flex: 4; }   /* 20% */
+
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 3rem 2rem;
+      overflow: hidden;
+    }
+
+    .section__inner {
+      width: 100%;
+      max-width: 780px;
+    }
+
+    /* =========================================
+       SECTION 1 — HEADING
+       ========================================= */
+
+    .section--heading {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .section--heading::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--crimson);
+    }
+
+    .heading__name {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .heading__bio {
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 540px;
+      opacity: 0.85;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+
+    /* =========================================
+       SECTION 2 — INTERESTING FACT
+       ========================================= */
+
+    .section--fact {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .section--fact::before {
+      content: '"';
+      position: absolute;
+      top: -0.15em;
+      left: -0.02em;
+      font-family: var(--display);
+      font-size: clamp(18rem, 40vw, 38rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--crimson);
+      opacity: 0.06;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .fact__label {
+      display: inline-block;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      border-bottom: 2px solid var(--vermillion);
+      padding-bottom: 0.2rem;
+      margin-bottom: 1.8rem;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+
+    .fact__text {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.35rem, 3vw, 2.2rem);
+      line-height: 1.45;
+      max-width: 660px;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+    }
+
+    .fact__text em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .fact__aside {
+      margin-top: 1.8rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 540px;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    }
+
+    /* =========================================
+       SECTION 3 — CONTACT
+       ========================================= */
+
+    .section--contact {
+      background: var(--vermillion);
+      color: var(--white);
+    }
+
+    .section--contact::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--blue);
+    }
+
+    .contact__heading {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    }
+
+    .contact__links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.6rem;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+    }
+
+    .contact__links a {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--white);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+      transition: border-color 0.3s ease, opacity 0.3s ease;
+    }
+
+    .contact__links a:hover,
+    .contact__links a:focus-visible {
+      border-color: var(--white);
+      opacity: 0.8;
+    }
+
+    .contact__note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-style: italic;
+      opacity: 0.7;
+      animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+    }
+
+    /* =========================================
+       ANIMATION
+       ========================================= */
+
+    @keyframes slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================
+       RESPONSIVE — small screens
+       ========================================= */
+
+    @media (max-width: 600px) {
+      section {
+        padding: 2.4rem 1.4rem;
+      }
+
+      .heading__name {
+        font-size: 2.2rem;
+      }
+
+      .fact__text {
+        font-size: 1.2rem;
+      }
+
+      .contact__heading {
+        font-size: 1.5rem;
+      }
+
+      .contact__links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .section--fact::before {
+        font-size: 14rem;
+      }
+    }
+
+    /* HiDPI fine-tuning */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .section--heading::before,
+      .section--contact::before {
+        height: 3px;
+      }
+    }
+
+    /* Tall viewports: enforce proportional feel */
+    @media (min-height: 800px) {
+      .section--heading   { min-height: 25vh; }
+      .section--fact      { min-height: 55vh; }
+      .section--contact   { min-height: 20vh; }
+    }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- 1. HEADING — 25% -->
+    <section class="section--heading">
+      <div class="section__inner">
+        <h1 class="heading__name">Nora Castillo</h1>
+        <p class="heading__bio">Computational linguist and sound designer based in Lisbon. I build tools that sit at the intersection of language, music, and machine perception.</p>
+      </div>
+    </section>
+
+    <!-- 2. INTERESTING FACT — 50% -->
+    <section class="section--fact">
+      <div class="section__inner">
+        <span class="fact__label">Something you should know</span>
+        <p class="fact__text">In 2019 I sailed a <em>32-foot sloop</em> solo from the Azores to Newfoundland with nothing but paper charts, a shortwave radio, and 40 kilograms of dried lentils.</p>
+        <p class="fact__aside">The crossing took 18 days. I lost the jib on day 11, improvised a replacement from a tarp, and arrived in St. John's harbour at dawn to a single fisherman clapping from the dock. The lentils lasted exactly to the final meal.</p>
+      </div>
+    </section>
+
+    <!-- 3. CONTACT — 25% -->
+    <section class="section--contact">
+      <div class="section__inner">
+        <h2 class="contact__heading">Say hello.</h2>
+        <ul class="contact__links">
+          <li><a href="mailto:nora@castillo.pt">nora@castillo.pt</a></li>
+          <li><a href="https://twitter.com/noracastillo" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="https://github.com/noracastillo" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/noracastillo" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+        <p class="contact__note">Currently open to collaborations in audio ML and generative language systems.</p>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
