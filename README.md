@@ -142,7 +142,7 @@ my-first-agent/ ├── specs/ # 📋 Specifications (read-only for agent) ├
 
 
 
-🌐 **[View Live Site]** - [URL added after deployment]
+🌐 **[View Live Site]** - [\[URL added after deployment\]](https://duncanh.github.io/my-first-agent/)
 
 
 
