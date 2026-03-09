@@ -51,9 +51,9 @@
       min-height: 100dvh;
     }
 
-    .section--heading   { flex: 5; }   /* 25% */
-    .section--fact      { flex: 11; }  /* 55% */
-    .section--contact   { flex: 4; }   /* 20% */
+    .section--heading   { flex: 1; }   /* 25% */
+    .section--fact      { flex: 2; }  /* 50% */
+    .section--contact   { flex: 1; }   /* 25% */
 
     section {
       display: flex;
@@ -284,8 +284,8 @@
     /* Tall viewports: enforce proportional feel */
     @media (min-height: 800px) {
       .section--heading   { min-height: 25vh; }
-      .section--fact      { min-height: 55vh; }
-      .section--contact   { min-height: 20vh; }
+      .section--fact      { min-height: 50vh; }
+      .section--contact   { min-height: 25vh; }
     }
 
     /* Reduce motion for accessibility */
